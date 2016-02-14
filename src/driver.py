@@ -9,7 +9,9 @@ parser = argparse.ArgumentParser(description=                                   
     "Store a message in an image file by hiding the message binary in the least \
     significant bits of the pixel color data.")
 
-# Specify either a message or a filename with message in plain text and a filename of an image to put it in, or a image with a message already in it and an optional filename to output the message into.
+# Specify either a message or a filename with message in plain text and a filename 
+#     of an image to put it in, or a image with a message already in it and an optional 
+#     filename to output the message into.
 # driver -m "message" -e "image.png"
 # driver -ptf "plain_text.txt" -e "image.png"
 # driver -d "image.encrypted.png"
