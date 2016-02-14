@@ -1,7 +1,12 @@
 # Steganography
 
-https://en.wikipedia.org/wiki/Steganography#Example_from_modern_practice
-Implement the text hiding in a png file
+Hiding information in images is a modern practice of steganography, I've chosen to imlement it with Python.
 
-Check back on the PNG (Portable Network Graphics) Specification, Version 1.2 
-chapter 3 on file structure
+## Overview
+The idea is that the ascii values of the characters that make the message can be written into the least significant bit of the pixels RGB color values. This is a very small change and is near impossible to tell by looking at the picture, particularly for large images.
+
+## TODO
+
+* Test Command Line arguments
+* Test for large text inputs and image sizes
+* Maybe add gui?
