@@ -11,13 +11,13 @@ def next_pixel(current_pixel, dim):
 # spits out the nth binary bit of a char
 def nth_bit(character, n):
     return (ord(character) >> (7-n))  % 2
-
+'''
 def print_bits(character):
     print(character , end = " : ")
     for i in range(8):
         print(nth_bit(character, i), end=" ")
     print()
-
+'''
 # Puts the new bits in the least significant place of the tuple values
 def place_bits(current_pixel, new_bits):
     current_pixel = list(current_pixel)

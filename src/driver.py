@@ -1,8 +1,10 @@
+#!/usr/bin/python
 
 import encrypt
 import decrypt
 import util_methods
 import argparse
+import sys
 
 # Argument parser to handle the command line arguments in a standard Python format
 parser = argparse.ArgumentParser(description=                                   \
@@ -37,6 +39,9 @@ parser.add_argument("-o", "--decrypted_output",
                     help = \
     "File to print decrypted output to, if not specified, prints to console.")
 
+if len(sys.argv) == 1:
+    parser.print_help()
+    sys.exit(1)
 args = parser.parse_args()
 
 
