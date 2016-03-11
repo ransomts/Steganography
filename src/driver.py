@@ -39,6 +39,7 @@ parser.add_argument("-o", "--decrypted_output",
                     help = \
     "File to print decrypted output to, if not specified, prints to console.")
 
+# if the program is run without arguments, spit out help and exit
 if len(sys.argv) == 1:
     parser.print_help()
     sys.exit(1)
@@ -52,7 +53,11 @@ if (args.plain_text_file != ""):
 
 # if there is a message to encode, encode it
 if (message != ""):
-    encode_text(message, args.encrypt_file)
+    if (args.encrypt_file != ""):
+        encode_text(message, args.encrypt_file)
+    else:
+        print("Please specify a file to encrypt.")
+        sys.exit(1)
 else:
     # otherwise decrypt the image specified
     message = decode_text(args.decrypt_file)
