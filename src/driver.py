@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-import encrypt
-import decrypt
+from encrypt import *
+from decrypt import *
 import util_methods
 import argparse
 import sys
@@ -48,12 +48,13 @@ args = parser.parse_args()
 
 # Uses the plain text command line argument unless there is a filename specified
 message = args.plain_text
-if (args.plain_text_file != ""):
+if (args.plain_text_file != None):
+    print(args.plain_text_file)
     message = read_message_from_file(plain_text_file)
 
 # if there is a message to encode, encode it
-if (message != ""):
-    if (args.encrypt_file != ""):
+if (message != None):
+    if (args.encrypt_file != None):
         encode_text(message, args.encrypt_file)
     else:
         print("Please specify a file to encrypt.")
@@ -62,7 +63,7 @@ else:
     # otherwise decrypt the image specified
     message = decode_text(args.decrypt_file)
     # and output the message to the console or to a file
-    if args.decrypted_output == "":
+    if args.decrypted_output == None:
         print(message)
     else:
         decrypted_file = open(args.decrypted_output, "w")

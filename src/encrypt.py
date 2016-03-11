@@ -1,6 +1,6 @@
 
 from PIL import Image
-import util_methods
+from util_methods import *
 
 def encode_text(plain_text, image_filename):
 
@@ -42,5 +42,7 @@ def encode_text(plain_text, image_filename):
         second_hex_tuple = next_pixel( first_hex_tuple, image.size)
         third_hex_tuple  = next_pixel(second_hex_tuple, image.size)
     # writes the new image as encoded
-    image.save(image.filename.replace(".", ".encoded."))
+    new_filename = image.filename.replace(".", ".encoded.")
+    image.save(image.filename)
+    #image.save(image.filename.replace(".", ".encoded."))
     image.close()

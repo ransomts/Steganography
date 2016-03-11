@@ -1,6 +1,6 @@
 
 from PIL import Image
-import util_methods
+from util_methods import *
 
 # decodes the text out of an image
 def decode_text(encoded_image_filename):
