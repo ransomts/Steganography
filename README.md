@@ -8,9 +8,11 @@ The idea is that the ascii values of the characters that make the message can be
 ## TODO
 
 * Test Command Line arguments
-  * Help works when given `-h` `--help` or nothing
-  * Encrypt text to file with `$./driver.py -pt <string> -e <file>`
-  * Decrypt file with `$./driver.py -d <file>`
+  * ~~Help works when given `-h` `--help` or nothing~~
+  * ~~Encrypt text to file with `-pt <string> -e <file>`~~
+  * ~~Decrypt file with `-d <file>`~~
+  * Encryption takes file contents with `-ptf <plain_text_file> -e <file>`
+  * Decryption outputs to file with `-d <encrypted_image_file> -o <output_file>`
 * Test for large text inputs and image sizes
 * Maybe add gui?
 
