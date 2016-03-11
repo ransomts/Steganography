@@ -54,7 +54,11 @@ if (args.plain_text_file != None):
 # if there is a message to encode, encode it
 if (message != None):
     if (args.encrypt_file != None):
-        encode_text(message, args.encrypt_file)
+        try:
+            encode_text(message, args.encrypt_file)
+        except IndexError:
+            print("File too small for message.")
+            sys.exit(1)
     else:
         print("Please specify a file to encrypt.")
         sys.exit(1)
