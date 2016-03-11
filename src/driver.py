@@ -49,8 +49,7 @@ args = parser.parse_args()
 # Uses the plain text command line argument unless there is a filename specified
 message = args.plain_text
 if (args.plain_text_file != None):
-    print(args.plain_text_file)
-    message = read_message_from_file(plain_text_file)
+    message = read_message_from_file(args.plain_text_file)
 
 # if there is a message to encode, encode it
 if (message != None):
@@ -66,7 +65,7 @@ else:
     if args.decrypted_output == None:
         print(message)
     else:
-        decrypted_file = open(args.decrypted_output, "w")
+        decrypted_file = open(args.decrypted_output, "w+")
         decrypted_file.write(message)
         decrypted_file.close()
 
