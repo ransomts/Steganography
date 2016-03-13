@@ -16,7 +16,7 @@ The idea is that the ascii values of the characters that make the message can be
 * Test for ~~large text inputs~~ and image sizes
 * GUI
   * Align objects (images, info label)
-  * Resizable objects (images, buttons, text area)
+  * Resizable objects (images, buttons, ~~text area~~)
   * Dynamically change images
   * Hook into actual running code
   * Finish menubar items 
