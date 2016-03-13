@@ -27,4 +27,4 @@ The idea is that the ascii values of the characters that make the message can be
     * Quit
       * help
       * about (include info about what's going on)
-
+  * Add accelerators to menubar items
