@@ -1,74 +1,66 @@
 #!/usr/bin/python
 
 from Tkinter import *
-def donothing():
-   filewin = Toplevel(root)
-   button = Button(filewin, text="Do nothing button")
-   button.pack()
+from ImageTk import *
+import tkMessageBox, tkFileDialog
 
-# This is the overall window
-root = Tk()
+master = Tk()
+master.columnconfigure(0, weight=1)
+master.columnconfigure(1, weight=1)
+master.rowconfigure(0, weight=1)
+master.rowconfigure(1, weight=1)
 
-menubar = Menu(root)
+encode_image = PhotoImage(Image.open("../../images/cat.png"))
+decode_image = PhotoImage(Image.open("../../images/cat.png"))
+
+#left_image = Label(master, text="First", image=encode_image).grid(row=0, column=0)
+left_image = Canvas(master, width=300, height=300).grid(row=0, column=0)
+left_image.create_image(0,0,image=encode_image)
+print("one: " + str(type(left_image)))
+
+right_image = Label(master, text="Second", image=decode_image).grid(row=0, column=1)
+
+info_label = Label(master, text="info")
+info_label.grid(row=1, columnspan=2)
+
+text_area = Text(master, height=10, width=50)
+text_area.grid(row=2, column=0, rowspan=2)
+
+# make button
+select_plaintext_file_button = Button(master, text='Select File')
+#place it in the grid
+select_plaintext_file_button.grid(row=2, column=1)
+
+encode_decode_button = Button(master, text='Encode').grid(row=3, column=1)
+
+def display_text():
+    tkMessageBox.showinfo("Text in bar", text_area.get("1.0", END))
+
+
+display_text_button = Button(master, text='Display Text', command=display_text)
+display_text_button.grid(row=4, column=1)
+
+def read_text():
+    # clear out what's already in the text area
+    text_area.delete('1.0', END)
+    filename = tkFileDialog.askopenfilename()
+    with open(filename, 'r') as plaintext_file:
+        text_area.insert('1.0', plaintext_file.read())
+
+def open_encode_image():
+    print("two: " + str(type(left_image)))
+    filename = tkFileDialog.askopenfilename()
+    #new_encode_image = PhotoImage(Image.open(filename))
+    #update the label image
+    #left_image.configure(image=new_encode_image)
+    img2 = PhotoImage(Image.open(filename))
+    left_image.configure(image = img2)
+    left_image.image = img2
+        
+menubar = Menu(master)
 filemenu = Menu(menubar, tearoff=0)
-filemenu.add_command(label="New", command=donothing)
-filemenu.add_command(label="Open", command=donothing)
-filemenu.add_command(label="Save", command=donothing)
-filemenu.add_command(label="Save as...", command=donothing)
-filemenu.add_command(label="Close", command=donothing)
-
-filemenu.add_separator()
-
-filemenu.add_command(label="Exit", command=root.quit)
-menubar.add_cascade(label="File", menu=filemenu)
-editmenu = Menu(menubar, tearoff=0)
-editmenu.add_command(label="Undo", command=donothing)
-
-editmenu.add_separator()
-
-editmenu.add_command(label="Cut", command=donothing)
-editmenu.add_command(label="Copy", command=donothing)
-editmenu.add_command(label="Paste", command=donothing)
-editmenu.add_command(label="Delete", command=donothing)
-editmenu.add_command(label="Select All", command=donothing)
-
-menubar.add_cascade(label="Edit", menu=editmenu)
-helpmenu = Menu(menubar, tearoff=0)
-helpmenu.add_command(label="Help Index", command=donothing)
-helpmenu.add_command(label="About...", command=donothing)
-menubar.add_cascade(label="Help", menu=helpmenu)
-
-
-root_pane = PanedWindow(root, orient=VERTICAL)
-root_pane.pack(fill=BOTH, expand=1)
-
-images_pane = PanedWindow(root_pane, bg = 'green')
-left_image = Label(images_pane, text = 'Left image')
-right_image = Label(images_pane, text = 'Right image')
-images_pane.add(left_image)
-images_pane.add(right_image)
-root_pane.add(images_pane)
-
-info_label = Label(root_pane, bg = 'yellow', text="info label pane")
-root_pane.add(info_label)
-
-bottom_pane = PanedWindow(root_pane)
-root_pane.add(bottom_pane)
-
-text_area = Text(bottom_pane)
-bottom_pane.add(text_area)
-
-def print_foo():
-    print("foo")
-
-button_pane = PanedWindow(bottom_pane, orient=VERTICAL)
-bottom_pane.add(button_pane)
-select_file_button = Button(button_pane, text = 'Select Text File', command = print_foo)
-button_pane.add(select_file_button)
-encode_decode_button = Button(button_pane, text = 'Encode/Decode', command = print_foo)
-button_pane.add(encode_decode_button)
-
-
-root.config(menu=menubar)
-root.mainloop()
-
+filemenu.add_command(label='Read Text From File', command=read_text)
+filemenu.add_command(label='Open image to encode', command=open_encode_image)
+menubar.add_cascade(label='File', menu=filemenu)
+master.config(menu=menubar)
+mainloop()
