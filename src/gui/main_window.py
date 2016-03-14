@@ -28,15 +28,32 @@ text_area.grid(row=2, column=0, rowspan=3, sticky=W+E+N+S)
 encode_lableframe = LabelFrame(master, text='Encode Input')
 encode_lableframe.grid(row = 2, column = 1, columnspan=2, sticky=W+E+N+S)
 
-#encode_rb_1 = RadioButton(master, text = 'text area')
-#encode_rb_1.grid(row=0,column=0)
-#encode_rb_2 = RadioButton(encode_lableframe, text = 'file')
+encode_variable = StringVar()
+encode_variable.set("Text Area")
 
+encode_rb_1 = Radiobutton(encode_lableframe, text='Text Area',
+                          variable=encode_variable, value="Text Area")
+encode_rb_1.grid(row=0,column=0, sticky=W)
+
+encode_rb_2 = Radiobutton(encode_lableframe, text='File',
+                          variable=encode_variable, value="File")
+encode_rb_2.grid(row=1,column=0, sticky=W)
+
+encode_variable = StringVar()
+encode_variable.set("Text Area")
 decode_lableframe = LabelFrame(master, text='Decode Input')
 decode_lableframe.grid(row = 3, column = 1, columnspan=2, sticky=W+E+N+S)
 
-encode_button = Button(master, text='Encode')
-encode_button.grid(row=4, column=1, sticky=W+E)
+decode_rb_1 = Radiobutton(decode_lableframe, text='Text Area',
+                          variable=encode_variable, value="Text Area")
+decode_rb_1.grid(row=0,column=0, sticky=W)
+
+decode_rb_2 = Radiobutton(decode_lableframe, text='File',
+                          variable=encode_variable, value="File")
+decode_rb_2.grid(row=1,column=0, sticky=W)
+
+decode_button = Button(master, text='Encode')
+decode_button.grid(row=4, column=1, sticky=W+E)
 
 decode_button = Button(master, text='Decode')
 decode_button.grid(row=4, column=2, sticky=W+E)
