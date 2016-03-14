@@ -3,7 +3,6 @@
 from Tkinter import *
 from ImageTk import *
 from tkMessageBox import *
-import tkFileDialog
 from Button_Commands import *
 
 master = Tk()
