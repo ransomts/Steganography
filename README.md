@@ -15,9 +15,9 @@ The idea is that the ascii values of the characters that make the message can be
   * ~~Decryption outputs to file with `-d <encrypted_image_file> -o <output_file>`~~
 * Test for ~~large text inputs~~ and image sizes
 * GUI
-  * Align objects (images, info label)
+  * ~~Align objects (images, info label)~~
   * Resizable objects (images, buttons, ~~text area~~)
-  * Dynamically change images
+  * ~~Dynamically change images~~
   * Hook into actual running code
   * Finish menubar items 
     * File
