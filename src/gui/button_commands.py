@@ -30,5 +30,3 @@ def open_decode_image(right_image):
     new_encode_image= PhotoImage(Image.open(filename))
     right_image.configure(image = new_encode_image)
     right_image.image = new_encode_image
-
-
