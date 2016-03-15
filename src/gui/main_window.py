@@ -5,6 +5,36 @@ from ImageTk import *
 from tkMessageBox import *
 from Button_Commands import *
 
+def how_to_use_command():
+    print("foo")
+    
+def about_command():
+    showinfo("About", 'Author: Tim Ransom\nMarch 2016')
+
+def quit_command():
+    master.destroy()
+
+def read_text():
+    # clear out what's already in the text area
+    text_area.delete('1.0', END)
+    filename = tkFileDialog.askopenfilename()
+    with open(filename, 'r') as plaintext_file:
+        text_area.insert('1.0', plaintext_file.read())
+
+def open_encode_image(e):
+    filename = askopenfilename()
+    new_encode_image= PhotoImage(Image.open(filename).resize(300,300))
+    left_image.configure(image = new_encode_image)
+    left_image.image = new_encode_image
+
+def open_decode_image(e):
+    filename = askopenfilename()
+    new_encode_image= PhotoImage(Image.open(filename).resize(300,300))
+    right_image.configure(image = new_encode_image)
+    right_image.image = new_encode_image
+
+
+
 master = Tk()
 master.columnconfigure(0, weight=2)
 master.columnconfigure(1, weight=1)
@@ -17,9 +47,11 @@ decode_image = PhotoImage(Image.open("../../images/cat.png"))
 
 left_image = Label(master, text="First", image=encode_image)
 left_image.grid(row=0, column=0, sticky=W+E+N+S)
+left_image.bind("<Button-1>", open_encode_image)
 
 right_image = Label(master, text="Second", image=decode_image)
 right_image.grid(row=0, column=1, columnspan=2, sticky=W+E+N+S)
+right_image.bind("<Button-1>", open_decode_image)
 
 text_area = Text(master, height=10, width=50)
 text_area.grid(row=2, column=0, rowspan=3, sticky=W+E+N+S)
@@ -57,11 +89,6 @@ decode_button.grid(row=4, column=1, sticky=W+E)
 decode_button = Button(master, text='Decode')
 decode_button.grid(row=4, column=2, sticky=W+E)
 
-
-
-#display_text_button = Button(master, text='Display Text', command=display_text)
-#display_text_button.grid(row=4, column=1)
-
         
 menubar = Menu(master)
 filemenu = Menu(menubar, tearoff=False)
@@ -69,8 +96,6 @@ filemenu.add_command(label='Read text from file', command=read_text)
 filemenu.add_command(label='Open image to encode', command=open_encode_image)
 filemenu.add_command(label='Open image to decode', command=open_decode_image)
 
-def quit_command():
-    master.destroy()
 
 helpmenu = Menu(menubar, tearoff=False)
 helpmenu.add_command(label='How to use', command=how_to_use_command)
