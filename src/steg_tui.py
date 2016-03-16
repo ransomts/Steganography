@@ -72,5 +72,3 @@ else:
         decrypted_file = open(args.decrypted_output, "w+")
         decrypted_file.write(message)
         decrypted_file.close()
-
-

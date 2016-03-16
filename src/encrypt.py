@@ -2,7 +2,7 @@
 from PIL import Image
 from util_methods import *
 
-def encode_text(plain_text, image_filename):
+def encode_text(plain_text, image_filename, output_filename=None):
 
     image = Image.open(image_filename)
     # puts the image into an array format
@@ -41,8 +41,15 @@ def encode_text(plain_text, image_filename):
         first_hex_tuple  = next_pixel( third_hex_tuple, image.size)
         second_hex_tuple = next_pixel( first_hex_tuple, image.size)
         third_hex_tuple  = next_pixel(second_hex_tuple, image.size)
+
     # writes the new image as encoded
-    new_filename = image.filename.replace(".", ".encoded.")
-    image.save(image.filename)
-    #image.save(image.filename.replace(".", ".encoded."))
+    if (output_filename == None):
+        output_filename = image.filename.replace(".", ".encoded.")
+    else:
+        output_filename = image_filename
+
+    #image.save(image.filename)
+    image.save(output_filename)
     image.close()
+    
+    return output_filename

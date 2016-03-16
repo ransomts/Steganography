@@ -13,8 +13,8 @@ master.columnconfigure(2, weight=1)
 master.rowconfigure(0, weight=1)
 master.rowconfigure(1, weight=1)
 
-encode_image = PhotoImage(file="../../images/cat.png")
-decode_image = PhotoImage(Image.open("../../images/cat.png"))
+encode_image = PhotoImage(file="../images/cat.png")
+decode_image = PhotoImage(Image.open("../images/cat.png"))
 
 left_image = Label(master, text="First", image=encode_image)
 left_image.grid(row=0, column=0, sticky=W+E+N+S)
@@ -54,10 +54,12 @@ decode_rb_2 = Radiobutton(decode_lableframe, text='File',
                           variable=encode_variable, value="File")
 decode_rb_2.grid(row=1,column=0, sticky=W)
 
-decode_button = Button(master, text='Encode')
-decode_button.grid(row=4, column=1, sticky=W+E)
+encode_button = Button(master, text='Encode', \
+                       command=lambda: encode_button_command(text_area))
+encode_button.grid(row=4, column=1, sticky=W+E)
 
-decode_button = Button(master, text='Decode')
+decode_button = Button(master, text='Decode', \
+                       command=lambda: decode_button_command(text_area))
 decode_button.grid(row=4, column=2, sticky=W+E)
 
         
