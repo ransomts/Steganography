@@ -7,6 +7,8 @@ from button_commands import *
 
 
 master = Tk()
+# Sets window title
+master.wm_title('Stegenography')
 
 # Sets up the grid weights to align the
 #   objects with
@@ -25,10 +27,12 @@ decode_image = PhotoImage(Image.open("../images/cat.png"))
 # opens dialogs to set up to encode or decode    #
 # that image.                                    #
 ##################################################
-left_image = Label(master, text="First", image=encode_image)
+left_image = Label(master, text="First", image=encode_image,
+                   anchor=W, justify=LEFT, wraplength=200, cursor='hand1')
 left_image.grid(row=0, column=0, sticky=W+E+N+S)
 
-right_image = Label(master, text="Second", image=decode_image)
+right_image = Label(master, text="Second", image=decode_image,
+                    anchor=W, justify=LEFT, wraplength=200, cursor='hand1')
 right_image.grid(row=0, column=1, columnspan=2, sticky=W+E+N+S)
 
 right_image.bind("<Button-1>", lambda e: open_decode_image(right_image, left_image))
@@ -78,12 +82,14 @@ decode_rb_2.grid(row=1,column=0, sticky=W)
 # Buttons to act as the kickers for the whole    #
 # process.                                       #
 ##################################################
-encode_button = Button(master, text='Encode', \
-                       command=lambda: encode_button_command(text_area))
+encode_button = Button(master, text='Encode',
+                       command=lambda: encode_button_command(text_area),
+                       cursor='hand1')
 encode_button.grid(row=4, column=1, sticky=W+E)
 
-decode_button = Button(master, text='Decode', \
-                       command=lambda: decode_button_command(text_area))
+decode_button = Button(master, text='Decode',
+                       command=lambda: decode_button_command(text_area),
+                       cursor='hand1')
 decode_button.grid(row=4, column=2, sticky=W+E)
 
 ##################################################

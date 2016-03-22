@@ -6,7 +6,7 @@ from encrypt import *
 from decrypt import *
 
 def how_to_use_command():
-    print("foo")
+    showinfo("How to use", "<fill in later>")
     
 def about_command():
     showinfo("About", 'Author: Tim Ransom\nMarch 2016')
@@ -24,13 +24,13 @@ def read_text(text_area, encode_variable):
     encode_variable.set("Text Area")
 
 def open_encode_image(left_image, right_image):
-    filename = askopenfilename() if new_image_filename == None else new_image_filename
+    filename = askopenfilename()
     if filename != () and filename != '':
         new_encode_image= PhotoImage(Image.open(filename))
         left_image.configure(image = new_encode_image)
         left_image.image = new_encode_image
 
-        right_image.configure(image='')
+        right_image.configure(text='The encoded image will be displayed here after encode is hit',image='')
 
 def open_decode_image(right_image, left_image):
     #filename = askopenfilename() if new_image_filename == None else new_image_filename
@@ -40,7 +40,7 @@ def open_decode_image(right_image, left_image):
         right_image.configure(image = new_encode_image)
         right_image.image = new_encode_image
 
-        left_image.configure(image='')
+        left_image.configure(image='', text='Image output will be displayed in the text area')
 
 def encode_button_command(encode_image, decode_image, text_area):
     new_image_filename = encode_text(text_area.get("1.0", END), encode_image)
