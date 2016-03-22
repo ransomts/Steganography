@@ -27,11 +27,11 @@ decode_image = PhotoImage(Image.open("../images/cat.png"))
 # opens dialogs to set up to encode or decode    #
 # that image.                                    #
 ##################################################
-left_image = Label(master, text="First", image=encode_image,
+left_image = Label(master, text="Open File to kickoff", #image=encode_image,
                    anchor=W, justify=LEFT, wraplength=200, cursor='hand1')
 left_image.grid(row=0, column=0, sticky=W+E+N+S)
 
-right_image = Label(master, text="Second", image=decode_image,
+right_image = Label(master, text="Second", #image=decode_image,
                     anchor=W, justify=LEFT, wraplength=200, cursor='hand1')
 right_image.grid(row=0, column=1, columnspan=2, sticky=W+E+N+S)
 
@@ -67,7 +67,7 @@ encode_rb_2.grid(row=1,column=0, sticky=W)
 
 decode_variable = StringVar()
 decode_variable.set("Text Area")
-decode_lableframe = LabelFrame(master, text='Decode Input')
+decode_lableframe = LabelFrame(master, text='Decode Output')
 decode_lableframe.grid(row = 3, column = 1, columnspan=2, sticky=W+E+N+S)
 
 decode_rb_1 = Radiobutton(decode_lableframe, text='Text Area',
@@ -88,7 +88,7 @@ encode_button = Button(master, text='Encode',
 encode_button.grid(row=4, column=1, sticky=W+E)
 
 decode_button = Button(master, text='Decode',
-                       command=lambda: decode_button_command(right_image, text_area),
+                       command=lambda: decode_button_command(right_image, text_area, decode_variable),
                        cursor='hand1')
 decode_button.grid(row=4, column=2, sticky=W+E)
 
@@ -99,8 +99,8 @@ decode_button.grid(row=4, column=2, sticky=W+E)
 menubar = Menu(master)
 filemenu = Menu(menubar, tearoff=False)
 filemenu.add_command(label='Read text from file', command=lambda: read_text(text_area, encode_variable))
-filemenu.add_command(label='Open image to encode', command=lambda e: open_encode_image())
-filemenu.add_command(label='Open image to decode', command=lambda e: open_decode_image())
+filemenu.add_command(label='Open image to encode', command=lambda : open_encode_image(left_image, right_image))
+filemenu.add_command(label='Open image to decode', command=lambda : open_decode_image(right_image, left_image))
 
 
 helpmenu = Menu(menubar, tearoff=False)
