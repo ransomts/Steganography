@@ -23,10 +23,8 @@ The idea is that the ascii values of the characters that make the message can be
     * File
       * ~~open image to decode~~
       * ~~open image to encode~~
-      * decode image
-      * encode image
     * Help
       * help
-      * about (include info about what's going on)
+      * about (include info about what's going on?)
       * ~~quit~~
   * Add accelerators to menubar items
