@@ -27,11 +27,12 @@ decode_image = PhotoImage(Image.open("../images/cat.png"))
 ##################################################
 left_image = Label(master, text="First", image=encode_image)
 left_image.grid(row=0, column=0, sticky=W+E+N+S)
-left_image.bind("<Button-1>", lambda e: open_encode_image(left_image))
 
 right_image = Label(master, text="Second", image=decode_image)
 right_image.grid(row=0, column=1, columnspan=2, sticky=W+E+N+S)
-right_image.bind("<Button-1>", lambda e: open_decode_image(right_image))
+
+right_image.bind("<Button-1>", lambda e: open_decode_image(right_image, left_image))
+left_image.bind("<Button-1>", lambda e: open_encode_image(left_image, right_image))
 
 ##################################################
 # Text area to display or load in text to or     #
@@ -56,7 +57,8 @@ encode_rb_1 = Radiobutton(encode_lableframe, text='Text Area',
 encode_rb_1.grid(row=0,column=0, sticky=W)
 
 encode_rb_2 = Radiobutton(encode_lableframe, text='File',
-                          variable=encode_variable, value="File")
+                          variable=encode_variable, value="File",
+                          command=lambda : read_text(text_area, encode_variable))
 encode_rb_2.grid(row=1,column=0, sticky=W)
 
 decode_variable = StringVar()
@@ -65,11 +67,11 @@ decode_lableframe = LabelFrame(master, text='Decode Input')
 decode_lableframe.grid(row = 3, column = 1, columnspan=2, sticky=W+E+N+S)
 
 decode_rb_1 = Radiobutton(decode_lableframe, text='Text Area',
-                          variable=encode_variable, value="Text Area")
+                          variable=decode_variable, value="Text Area")
 decode_rb_1.grid(row=0,column=0, sticky=W)
 
 decode_rb_2 = Radiobutton(decode_lableframe, text='File',
-                          variable=encode_variable, value="File")
+                          variable=decode_variable, value="File")
 decode_rb_2.grid(row=1,column=0, sticky=W)
 
 ##################################################
@@ -90,7 +92,7 @@ decode_button.grid(row=4, column=2, sticky=W+E)
 ##################################################
 menubar = Menu(master)
 filemenu = Menu(menubar, tearoff=False)
-filemenu.add_command(label='Read text from file', command=read_text)
+filemenu.add_command(label='Read text from file', command=lambda: read_text(text_area, encode_variable))
 filemenu.add_command(label='Open image to encode', command=lambda e: open_encode_image())
 filemenu.add_command(label='Open image to decode', command=lambda e: open_decode_image())
 

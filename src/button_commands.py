@@ -14,24 +14,33 @@ def about_command():
 def quit_command(master):
     master.destroy()
 
-def read_text():
+def read_text(text_area, encode_variable):
     # clear out what's already in the text area
     text_area.delete('1.0', END)
-    filename = tkFileDialog.askopenfilename()
-    with open(filename, 'r') as plaintext_file:
-        text_area.insert('1.0', plaintext_file.read())
+    filename = askopenfilename()
+    if filename != () and filename != '':
+        with open(filename, 'r') as plaintext_file:
+            text_area.insert('1.0', plaintext_file.read())
+    encode_variable.set("Text Area")
 
-def open_encode_image(left_image, new_image_filename=None):
+def open_encode_image(left_image, right_image):
     filename = askopenfilename() if new_image_filename == None else new_image_filename
-    new_encode_image= PhotoImage(Image.open(filename))
-    left_image.configure(image = new_encode_image)
-    left_image.image = new_encode_image
+    if filename != () and filename != '':
+        new_encode_image= PhotoImage(Image.open(filename))
+        left_image.configure(image = new_encode_image)
+        left_image.image = new_encode_image
 
-def open_decode_image(right_image, new_image_filename=None):
-    filename = askopenfilename() if new_image_filename == None else new_image_filename
-    new_encode_image= PhotoImage(Image.open(filename))
-    right_image.configure(image = new_encode_image)
-    right_image.image = new_encode_image
+        right_image.configure(image='')
+
+def open_decode_image(right_image, left_image):
+    #filename = askopenfilename() if new_image_filename == None else new_image_filename
+    filename = askopenfilename()
+    if filename != () and filename != '':
+        new_encode_image= PhotoImage(Image.open(filename))
+        right_image.configure(image = new_encode_image)
+        right_image.image = new_encode_image
+
+        left_image.configure(image='')
 
 def encode_button_command(encode_image, decode_image, text_area):
     new_image_filename = encode_text(text_area.get("1.0", END), encode_image)
