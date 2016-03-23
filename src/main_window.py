@@ -11,7 +11,7 @@ from button_commands import *
 ##################################################
 master = Tk()
 
-master.wm_title('Stegenography')
+master.wm_title('Steganography')
 master.columnconfigure(0, weight=2)
 master.columnconfigure(1, weight=1)
 master.columnconfigure(2, weight=1)
