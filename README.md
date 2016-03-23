@@ -14,13 +14,8 @@ The idea is that the ascii values of the characters that make the message can be
 
 ## TODO
 
-* Test Command Line arguments
-* Test for large image sizes
 * GUI
-  * Resizable images in labels
-  * Hook into actual running code
   * Finish menubar items 
     * Help
       * help
       * info (short description of whats happening)
-  * Add accelerators to menubar items
