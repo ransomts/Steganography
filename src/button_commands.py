@@ -6,7 +6,7 @@ from encrypt import *
 from decrypt import *
 
 def how_to_use_command():
-    showinfo('How to use', "<fill in later>")
+    showinfo('How to use', 'The idea is that the ascii values of the characters that make the message can be written into the least significant bit of the pixels RGB color values. This is a very small change and is near impossible to tell by looking at the picture, particularly for large images.')
 
 def about_command():
     showinfo('About', 'Author: Tim Ransom\nMarch 2016')

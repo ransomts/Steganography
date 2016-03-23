@@ -13,9 +13,4 @@ The idea is that the ascii values of the characters that make the message can be
 * Decryption outputs to file with `-d <encrypted_image_file> -o <output_file>`
 
 ## TODO
-
-* GUI
-  * Finish menubar items 
-    * Help
-      * help
-      * info (short description of whats happening)
+:)
