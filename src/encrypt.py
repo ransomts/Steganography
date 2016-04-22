@@ -43,6 +43,7 @@ def encode_text(plain_text, image_filename, output_filename=None):
         third_hex_tuple  = next_pixel(second_hex_tuple, image.size)
 
     # writes the new image as encoded
+    # NOTE: this will overwrite other files
     if (output_filename == None):
         output_filename = image.filename.replace(".", ".encoded.")
     else:

@@ -111,7 +111,7 @@ helpmenu.add_command(label='Quit', command=lambda e:quit_command(), underline=0,
 menubar.add_cascade(label='File', menu=filemenu)
 menubar.add_cascade(label='Help', menu=helpmenu)
 
-master.bind('<Control-q>', lambda e: quit_command(master))
+master.bind('<Control-q>', lambda e=None: quit_command(master))
 master.config(menu=menubar)
 
 ##################################################
