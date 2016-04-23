@@ -113,9 +113,13 @@ def parse_message(encode_image_filename, message_filename, encode_file_number):
 
     message = get_file_bytes(message_filename)
 
-    num_pixels = number_of_pixels_in_image(image)
+    total_num_bits = number_of_pixels_in_image(image) * 3
+    bits_in_message = len(message) * 8
     # TODO: calculate the amount of the message that can fit in the image
     # both tokens need a total of 28 pixels, so the message needs to fill the rest
+    messgae_len = len(message)
+    
+    bits_that_fit_in_file = num_pixels * 3
     
     put_message_and_tokens_in_file(pixels, message)
 
