@@ -5,6 +5,7 @@ def next_pixel(current_pixel, dim):
         test_location = (test_location[0]%dim[0], test_location[1]+1)
     # I really don't like this...    
     if test_location[1] > dim[1]:
+        
         return False
     return test_location
 
@@ -30,8 +31,7 @@ def place_bits(current_pixel, new_bits):
 
 # Returns a string with the contents of a file in it
 def read_message_from_file(filename):
-    with open(filename, "r") as file:
+    with open(filename, "rb") as file:
         message = file.read()
     file.close()
     return message
-
