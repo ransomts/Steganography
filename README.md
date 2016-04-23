@@ -15,4 +15,7 @@ The idea is that the ascii values of the characters that make the message can be
 ![Sample of GUI](https://github.com/ransomts/Steganography/blob/master/images/sample.png)
 
 ## TODO
-:)
+- Extend to binary data, rather than ASCII
+- Fix bit alignment issues
+- Implement file separation tokens
+- Extend message into separate encoded image files
