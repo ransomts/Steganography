@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
-from Tkinter import *
-from ImageTk import *
-from tkMessageBox import *
+import _tkinter
+from tkinter import *
+from PIL import Image, ImageTk
+#from tkMessageBox import *
 from button_commands import *
 
 ##################################################
